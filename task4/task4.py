@@ -23,7 +23,7 @@ def read_file(file_path):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Использование: python script.py author.txt")
+        print("Использование: python task4.py numbers.txt")
         sys.exit(1)
 
     file_path = sys.argv[1]
