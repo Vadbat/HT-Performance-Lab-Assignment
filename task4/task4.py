@@ -1,4 +1,5 @@
 import os
+import sys
 
 def min_moves(nums):
     n = len(nums)
@@ -12,9 +13,19 @@ def min_moves(nums):
 
     return moves
 
+def get_file_path(prompt):
+    while True:
+        file_path = input(prompt)
+        if file_path.lower() == 'exit':
+            sys.exit(0)  # Exiting the script if the user wants to quit
+        try:
+            with open(file_path, 'r'):
+                return file_path
+        except FileNotFoundError:
+            print(f"Файл не верно введен - {file_path}")
+
 def main():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(script_dir, "numbers.txt")
+    file_path = get_file_path("Введите путь к файлу numbers.txt (или введите 'exit' для выхода): ")
 
     try:
         with open(file_path, 'r') as file:
@@ -22,7 +33,7 @@ def main():
             result = min_moves(nums)
             print(f"Минимальное количество ходов: {result}")
     except FileNotFoundError:
-        print(f"Файл numbers.txt не найден в каталоге {script_dir}.")
+        print(f"Файл numbers.txt не найден по указанному пути.")
 
 if __name__ == "__main__":
     main()

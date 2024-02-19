@@ -1,6 +1,6 @@
 def main():
-    n = 5
-    m = 4
+    n = int(input('n = '))
+    m = int(input('m = '))
 
     i = 1
     path = []

@@ -10,12 +10,27 @@ def fill_values(tests, values):
             elif "values" in test:
                 fill_values(test["values"], values)
 
+def get_file_path(prompt):
+    file_path = input(prompt)
+    return os.path.abspath(file_path)
+
 def main():
-    # Полные пути к файлам
+    # Получение текущего рабочего каталога
     script_path = os.path.dirname(os.path.abspath(__file__))
-    values_path = os.path.join(script_path, 'values.json')
-    tests_path = os.path.join(script_path, 'tests.json')
+
+    # Ввод путей к файлам от пользователя
+    values_path = get_file_path("Введите путь к файлу values.json: ")
+    tests_path = get_file_path("Введите путь к файлу tests.json: ")
     report_path = os.path.join(script_path, 'report.json')
+
+    # Проверка существования файлов перед их загрузкой
+    if not os.path.exists(values_path):
+        print(f"Файл {values_path} не найден.")
+        return
+
+    if not os.path.exists(tests_path):
+        print(f"Файл {tests_path} не найден.")
+        return
 
     # Загрузка данных из файлов
     with open(values_path, 'r') as values_file:
