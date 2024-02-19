@@ -16,12 +16,13 @@ def get_file_path(prompt):
 
 def main():
     # Получение текущего рабочего каталога
-    script_path = os.path.dirname(os.path.abspath(__file__))
+    # script_path = os.path.dirname(os.path.abspath(__file__))
 
     # Ввод путей к файлам от пользователя
     values_path = get_file_path("Введите путь к файлу values.json: ")
     tests_path = get_file_path("Введите путь к файлу tests.json: ")
-    report_path = os.path.join(script_path, 'report.json')
+    report_path = get_file_path("Введите путь к файлу report.json: ")
+    # report_path = os.path.join(script_path, 'report.json')
 
     # Проверка существования файлов перед их загрузкой
     if not os.path.exists(values_path):
