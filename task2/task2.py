@@ -50,7 +50,7 @@ def dot_position_relative_to_circle(dot, circle):
 
 def main():
     if len(sys.argv) != 3:
-        print("Пример команды через комадной строки python script.py circle_file points_file")
+        print("Пример команды через комадной строки python task2.py circle.txt dot.txt")
         circle_file_path = get_file_path("Введите путь к файлу circle.txt: ")
         dots_file_path = get_file_path("Введите путь к файлу dot.txt: ")
     else:
