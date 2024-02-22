@@ -1,6 +1,14 @@
+import sys
+
 def main():
-    n = int(input('n = '))
-    m = int(input('m = '))
+    
+    if len(sys.argv) != 3:
+        print("Пример команды через комадной строки python task1.py 4 3")
+        n = int(input("n = "))
+        m = int(input("m = "))
+    else:
+        n = int(sys.argv[1])
+        m = int(sys.argv[2])
 
     i = 1
     path = []
@@ -11,12 +19,10 @@ def main():
         if i == 1:
             break
 
-    circular_array = ''.join(map(str, range(1, n + 1)))
-    print(f"Круговой массив: {circular_array}.")
-
     result_path = ''.join(map(str, path))
-    print(f"Путь: {result_path}")
+    print(result_path)
 
 
 if __name__ == "__main__":
     main()
+    

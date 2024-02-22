@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 
 def fill_values(tests, values):
     for test in tests:
@@ -15,10 +16,17 @@ def get_file_path(prompt):
     return os.path.abspath(file_path)
 
 def main():
+    if len(sys.argv) != 4:
+        print("Пример команды через комадной строки python task3.py values.json tests.json report.json")
+        values_path = get_file_path("Введите путь к файлу values.json: ")
+        tests_path = get_file_path("Введите путь к файлу tests.json: ")
+        report_path = get_file_path("Введите путь к файлу report.json: ")
+    else:
+        values_path = sys.argv[1]
+        tests_path = sys.argv[2]
+        report_path = sys.argv[3]
 
-    values_path = get_file_path("Введите путь к файлу values.json: ")
-    tests_path = get_file_path("Введите путь к файлу tests.json: ")
-    report_path = get_file_path("Введите путь к файлу report.json: ")
+    
 
     if not os.path.exists(values_path):
         print(f"Файл {values_path} не найден.")

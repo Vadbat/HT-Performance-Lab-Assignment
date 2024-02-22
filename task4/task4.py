@@ -25,7 +25,12 @@ def get_file_path(prompt):
             print(f"Файл не верно введен - {file_path}")
 
 def main():
-    file_path = get_file_path("Введите путь к файлу numbers.txt (или введите 'exit' для выхода): ")
+    if len(sys.argv) != 2:
+        print("Пример команды через комадной строки python task4.py numbers.txt")
+        file_path = get_file_path("Введите путь к файлу numbers.txt (или введите 'exit' для выхода): ")
+    else:
+        file_path = sys.argv[1]
+    
 
     try:
         with open(file_path, 'r') as file:
